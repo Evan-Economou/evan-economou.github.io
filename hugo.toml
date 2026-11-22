@@ -1,6 +1,6 @@
 # Site-wide settings. Change baseURL to your real domain before deploying.
 baseURL = "https://example.com/"
-title = "Evan's AI Notebook"
+title = "Evan's Notebook"
 locale = "en-US"
 
 # Every top-level folder in content/ automatically becomes a tab in the menu.

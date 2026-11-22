@@ -53,10 +53,18 @@ jobs:
         run: |
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      # Packaged by hand instead of with actions/upload-pages-artifact, because
+      # that action drops hidden files like /.well-known/tdmrep.json.
+      - name: Package site
+        run: tar --dereference --hard-dereference --directory public -cvf "$RUNNER_TEMP/artifact.tar" .
+
       - name: Upload site
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
-          path: ./public
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build

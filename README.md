@@ -1,4 +1,4 @@
-# Evan's AI Notebook
+# Evan's Notebook
 
 A small personal site where I write plain-language explainers about AI, digital
 safety, and other technical topics, plus context on current events, for friends
