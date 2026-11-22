@@ -1,0 +1,6 @@
+{{- $author := .Params.author | default site.Params.author }}
+<p class="meta">
+  {{- with $author }}By {{ . }} on {{ end -}}
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+  {{- with .CurrentSection }}{{ if not .IsHome }}, in <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}
+</p>

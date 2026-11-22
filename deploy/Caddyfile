@@ -1,0 +1,50 @@
+# /etc/caddy/Caddyfile
+# Replace example.com with your domain. Caddy gets and renews HTTPS
+# certificates automatically and redirects http:// to https://.
+
+example.com, www.example.com {
+	root * /var/www/site
+
+	# Refuse known AI crawlers outright (robots.txt only asks politely).
+	# Keep this list in sync with aiBots in hugo.toml.
+	@aibots header_regexp User-Agent (?i)(GPTBot|ChatGPT\-User|OAI\-SearchBot|ClaudeBot|Claude\-User|Claude\-SearchBot|anthropic\-ai|Google\-Extended|GoogleOther|Applebot\-Extended|CCBot|PerplexityBot|Perplexity\-User|Meta\-ExternalAgent|Meta\-ExternalFetcher|FacebookBot|Bytespider|Amazonbot|cohere\-ai|cohere\-training\-data\-crawler|MistralAI\-User|DuckAssistBot|AI2Bot|Diffbot|Omgilibot|Timpibot|ImagesiftBot|YouBot|PanguBot)
+	respond @aibots "AI crawling is not permitted on this site." 403
+	encode zstd gzip
+	file_server
+
+	# Security headers
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'"
+		X-Robots-Tag "noai, noimageai"
+		-Server
+	}
+
+	# Cache CSS/images for a while (CSS filenames change on every edit,
+	# so visitors always get the latest version).
+	@static path *.css *.svg *.png *.jpg *.jpeg *.webp *.gif
+	header @static Cache-Control "public, max-age=604800"
+
+	# Optional: require a password for the whole site.
+	# Generate a hash with:  caddy hash-password
+	# then uncomment and fill in:
+	# basic_auth {
+	# 	family $2a$14$REPLACE_WITH_HASH
+	# }
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+
+	log {
+		output file /var/log/caddy/site.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}

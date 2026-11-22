@@ -1,0 +1,13 @@
+{{- /*
+  Renders math written between $...$ (inline) or $$...$$ (its own line).
+  The LaTeX is converted to MathML when the site is built, so readers'
+  browsers display it natively: no JavaScript or extra fonts needed.
+  A typo in a formula stops the build with an error naming the file.
+*/ -}}
+{{- $block := eq .Type "block" }}
+{{- $math := transform.ToMath .Inner (dict "output" "mathml" "displayMode" $block) }}
+{{- if $block }}
+<div class="math-block">{{ $math }}</div>
+{{- else }}
+{{- $math }}
+{{- end }}

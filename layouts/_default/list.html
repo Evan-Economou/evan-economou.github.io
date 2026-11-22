@@ -1,0 +1,11 @@
+{{ define "main" }}
+<header class="page-band">
+  <div class="wrap">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="page-intro">{{ . }}</div>{{ end }}
+  </div>
+</header>
+<div class="wrap">
+  {{ partial "post-list.html" (dict "pages" .Pages "showSection" false) }}
+</div>
+{{ end }}

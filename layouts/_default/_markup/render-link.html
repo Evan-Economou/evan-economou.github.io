@@ -1,0 +1,11 @@
+{{- /*
+  Renders Markdown links. Site-internal links written like [text](/about/)
+  get the site's base path added, so they still work if the site is served
+  from a subfolder (e.g. username.github.io/repo/). Other links are unchanged.
+*/ -}}
+{{- $dest := .Destination }}
+{{- if and (hasPrefix $dest "/") (not (hasPrefix $dest "//")) }}
+  {{- $dest = relURL (strings.TrimPrefix "/" $dest) }}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- /* no trailing newline */ -}}

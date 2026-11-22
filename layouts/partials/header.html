@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    <nav aria-label="Main">
+      {{- $current := . }}
+      {{- range site.Menus.main }}
+      {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+      <a href="{{ .URL }}"{{ with .Page }}{{ with .Section }} class="accent-{{ . }}"{{ end }}{{ end }}{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+  </div>
+</header>

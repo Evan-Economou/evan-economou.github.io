@@ -1,0 +1,24 @@
+{{- /* Usage: partial "post-list.html" (dict "pages" $pages "showSection" true) */}}
+{{- $showSection := .showSection }}
+{{- with .pages }}
+<ol class="post-list" reversed>
+  {{- range . }}
+  <li class="accent-{{ .Section | default "site" }}">
+    <div class="post-when">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      {{- if $showSection }}{{ with .CurrentSection }}{{ if not .IsHome }}
+      <span class="post-section">{{ .Title }}</span>
+      {{- end }}{{ end }}{{ end }}
+    </div>
+    <div class="post-what">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{- with .Description }}
+      <p>{{ . }}</p>
+      {{- end }}
+    </div>
+  </li>
+  {{- end }}
+</ol>
+{{- else }}
+<p class="empty">No posts here yet. New ones will show up in this list as soon as they're published.</p>
+{{- end }}

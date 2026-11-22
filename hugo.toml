@@ -1,0 +1,60 @@
+# Site-wide settings. Change baseURL to your real domain before deploying.
+baseURL = "https://example.com/"
+title = "Evan's AI Notebook"
+locale = "en-US"
+
+# Every top-level folder in content/ automatically becomes a tab in the menu.
+sectionPagesMenu = "main"
+
+# Keep things simple: no tag/category pages.
+disableKinds = ["taxonomy", "term"]
+
+# Generate robots.txt from layouts/robots.txt
+enableRobotsTXT = true
+
+[params]
+  description = "Explainers, learning resources, and notes on current events — shared by Evan with friends and family."
+  author = "Evan Economou"
+  # Contact email, split in two so it isn't sitting in the page as plain
+  # text for spam bots to harvest. Leave emailUser empty to hide the link.
+  emailUser = "eteconomou"
+  emailDomain = "gmail.com"
+  # Short greeting shown at the top of the home page.
+  greeting = "Hi, I'm Evan!"
+  # true = ask search engines not to index the site (it's for friends & family).
+  noindex = true
+  # true = opt out of AI training and AI scraping. This adds a robots.txt
+  # rule for each crawler below, "noai" meta tags, and a TDM opt-out
+  # (static/.well-known/tdmrep.json). It stays in effect even if noindex is false.
+  blockAI = true
+  # Known AI crawlers. Add new ones as they appear.
+  aiBots = [
+    "GPTBot", "ChatGPT-User", "OAI-SearchBot",
+    "ClaudeBot", "Claude-User", "Claude-SearchBot", "anthropic-ai",
+    "Google-Extended", "GoogleOther", "Applebot-Extended",
+    "CCBot", "PerplexityBot", "Perplexity-User",
+    "Meta-ExternalAgent", "Meta-ExternalFetcher", "FacebookBot",
+    "Bytespider", "Amazonbot", "cohere-ai", "cohere-training-data-crawler",
+    "MistralAI-User", "DuckAssistBot", "AI2Bot", "Diffbot",
+    "Omgilibot", "Timpibot", "ImagesiftBot", "YouBot", "PanguBot",
+  ]
+  # How many recent articles to show on the home page.
+  homeCount = 5
+
+# Raw HTML in Markdown is NOT rendered (safer). Set to true only if you need it.
+[markup.goldmark.renderer]
+  unsafe = false
+
+# Lets an image on its own line become a <figure> with an optional caption.
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+
+# Math: $...$ for math inside a sentence, $$...$$ for an equation on its own
+# line. Written in LaTeX and turned into MathML when the site is built
+# (see layouts/_default/_markup/render-passthrough.html). Use \$ for a
+# literal dollar sign, e.g. \$20.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]

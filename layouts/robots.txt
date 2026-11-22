@@ -1,0 +1,11 @@
+{{- if site.Params.blockAI -}}
+# AI crawlers: no access for training, scraping, or AI answers.
+{{ range site.Params.aiBots -}}
+User-agent: {{ . }}
+{{ end -}}
+Disallow: /
+
+{{ end -}}
+# Everyone else
+User-agent: *
+{{ if site.Params.noindex }}Disallow: /{{ else }}Allow: /{{ end }}

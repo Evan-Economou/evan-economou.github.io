@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{- $inTab := not .CurrentSection.IsHome }}
+<article class="wrap article">
+  <header class="article-header">
+    <h1>{{ .Title }}</h1>
+    {{ if and $inTab .Description }}<p class="standfirst">{{ .Description }}</p>{{ end }}
+    {{ if $inTab }}{{ partial "meta.html" . }}{{ end }}
+  </header>
+  <div class="content">
+    {{ .Content }}
+  </div>
+  {{ if $inTab }}
+  <p class="back"><a href="{{ .CurrentSection.RelPermalink }}">More posts in {{ .CurrentSection.Title }}</a></p>
+  {{ end }}
+</article>
+{{ end }}

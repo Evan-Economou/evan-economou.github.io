@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; {{ now.Year }} {{ site.Params.author | default site.Title }}</span>
+    {{- with site.Params.emailUser }}
+    <span><a href="#" class="contact-link" data-user="{{ . }}" data-domain="{{ site.Params.emailDomain }}">Contact me</a><noscript> ({{ . }} at {{ site.Params.emailDomain }})</noscript></span>
+    {{- end }}
+    <span><a href="{{ "index.xml" | relURL }}">RSS</a></span>
+  </div>
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+</footer>

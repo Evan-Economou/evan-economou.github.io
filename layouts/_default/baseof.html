@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  {{- $desc := .Description }}
+  {{- if and (not $desc) .IsSection }}{{ $desc = .Summary | plainify | strings.TrimSpace }}{{ end }}
+  <meta name="description" content="{{ $desc | default site.Params.description }}">
+  {{- with .Params.author | default site.Params.author }}
+  <meta name="author" content="{{ . }}">
+  {{- end }}
+  {{- $robots := slice }}
+  {{- if site.Params.noindex }}{{ $robots = $robots | append "noindex" "nofollow" }}{{ end }}
+  {{- if site.Params.blockAI }}{{ $robots = $robots | append "noai" "noimageai" }}{{ end }}
+  {{- with $robots }}
+  <meta name="robots" content="{{ delimit . ", " }}">
+  {{- end }}
+  {{- if site.Params.blockAI }}
+  <meta name="tdm-reservation" content="1">
+  {{- end }}
+  <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+  {{- $css := resources.Get "css/style.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- if site.Params.emailUser }}
+  {{- $js := resources.Get "js/contact.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  {{- end }}
+  {{- with .OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+  {{- end }}
+</head>
+<body class="accent-{{ .Section | default "site" }}">
+  {{ partial "header.html" . }}
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+</body>
+</html>

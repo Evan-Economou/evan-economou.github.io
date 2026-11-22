@@ -1,0 +1,37 @@
+{{- /*
+  Renders Markdown images: ![alt text](photo.jpg "Optional caption")
+
+  - Images stored next to the article (page bundle) are resized automatically
+    to at most 1600px wide, so big phone photos don't slow the page down.
+  - Images in static/ (e.g. /images/photo.jpg) are used as-is.
+  - A "caption" in quotes after the filename is shown under the image.
+*/ -}}
+{{- $src := .Destination }}
+{{- $alt := .PlainText }}
+{{- $width := 0 }}
+{{- $height := 0 }}
+{{- with .Page.Resources.Get .Destination }}
+  {{- if and (eq .ResourceType "image") (in (slice "jpeg" "png" "gif" "webp") .MediaType.SubType) }}
+    {{- $img := . }}
+    {{- if gt .Width 1600 }}{{ $img = .Resize "1600x" }}{{ end }}
+    {{- $src = $img.RelPermalink }}
+    {{- $width = $img.Width }}
+    {{- $height = $img.Height }}
+  {{- else }}
+    {{- $src = .RelPermalink }}
+  {{- end }}
+{{- end }}
+{{- /* Site-internal paths like /images/x.jpg get the base path added. */}}
+{{- if and (eq $src .Destination) (hasPrefix $src "/") (not (hasPrefix $src "//")) }}
+  {{- $src = relURL (strings.TrimPrefix "/" $src) }}
+{{- end }}
+{{- if .IsBlock }}
+<figure>
+  <img src="{{ $src }}" alt="{{ $alt }}"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }} loading="lazy" decoding="async">
+  {{- with .Title }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+<img src="{{ $src }}" alt="{{ $alt }}"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- end }}

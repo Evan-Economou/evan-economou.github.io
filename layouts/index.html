@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <h1>{{ site.Params.greeting | default site.Title }}</h1>
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="home-block">
+    <h2>Recent posts</h2>
+    {{- /* Articles that live inside a tab (root-level pages like About are skipped). */}}
+    {{- $posts := where site.RegularPages "Section" "!=" "" }}
+    {{ partial "post-list.html" (dict "pages" (first (site.Params.homeCount | default 5) $posts) "showSection" true) }}
+  </section>
+
+  {{- with site.Sections.ByWeight }}
+  <section class="home-block">
+    <h2>Topics</h2>
+    <div class="topics">
+      {{- range . }}
+      <div class="topic accent-{{ .Section }}">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ .Content }}
+      </div>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{ end }}
