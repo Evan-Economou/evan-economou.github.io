@@ -8,7 +8,7 @@ menu:
 
 Hi, I'm Evan! I graduated in 2026 from Colorado School of Mines with a MS in data science and have been working as a data scientist since then. However, during college I found a love for education, and want to be able to keep pursuing that as best that I can.
 
-I started this site because there is an absurd amount of tech related news constantly innundating feeds and our attention, but so many sources are so hungry for engagement that it's hard to tell if the information you are getting is useful or just a scare tactic. Everything is related to each other and builds on a foundation of information that you may not have. Also because I am doing this individually for like 6 groups right now I might as well just put it somewhere that everyone can access.
+I started this site because there is an absurd amount of tech related news constantly innundating feeds and our attention, but so many sources are so hungry for engagement that it's hard to tell if the information you are getting is useful or just a scare tactic. Everything is related to each other and builds on a foundation of information that you may not have. Also because I am doing this individually for like 6 groups currently, I might as well just put it somewhere that everyone can access.
 
 My goal here is ultimately to make it easy to follow trends, easy to learn about context that many articles you see won't give you, and easy to learn everything you may need to fully understand it.
 
