@@ -6,6 +6,25 @@
   </div>
 </header>
 <div class="wrap">
+  {{- /* Every tag used by an article in this tab, for the filter menu. */}}
+  {{- $tags := slice }}
+  {{- range .Pages }}{{ $tags = $tags | append (partial "page-tags.html" .) }}{{ end }}
+  {{- with $tags | uniq | sort }}
+  {{- /* Hidden until tag-filter.js runs, so it never shows up without JavaScript. */}}
+  <div class="tag-filter" hidden>
+    <label for="tag-filter">Show</label>
+    <select id="tag-filter" autocomplete="off">
+      <option value="">All articles</option>
+      {{- range . }}
+      <option value="{{ urlize . }}">{{ . }}</option>
+      {{- end }}
+    </select>
+  </div>
+  {{- end }}
   {{ partial "post-list.html" (dict "pages" .Pages "showSection" false) }}
 </div>
+{{- if $tags }}
+{{- $js := resources.Get "js/tag-filter.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}
 {{ end }}

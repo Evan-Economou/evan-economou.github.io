@@ -3,6 +3,7 @@ title: "What is AI?"
 date: 2026-11-21
 author: "Evan Economou"
 description: "A brief introduction to the concepts behind AI"
+tags: ["AI learning series"]
 ---
 
 Imagine a problem that a computer can solve. It has inputs, some outputs, and something that happens in the middle where the computer solves the problem. We will represent this using the equation $y = mx + b$, where $x$ is our input, $y$ is our output, and $m$ and $b$ represent the rule the computer uses to go from input to output.

@@ -3,7 +3,8 @@
 {{- with .pages }}
 <ol class="post-list" reversed>
   {{- range . }}
-  <li class="accent-{{ .Section | default "site" }}">
+  {{- $tags := partial "page-tags.html" . }}
+  <li class="accent-{{ .Section | default "site" }}"{{ with $tags }} data-tags="{{ range $i, $t := . }}{{ if $i }} {{ end }}{{ urlize $t }}{{ end }}"{{ end }}>
     <div class="post-when">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
       {{- if $showSection }}{{ with .CurrentSection }}{{ if not .IsHome }}
@@ -15,6 +16,7 @@
       {{- with .Description }}
       <p>{{ . }}</p>
       {{- end }}
+      {{- partial "tag-list.html" . }}
     </div>
   </li>
   {{- end }}

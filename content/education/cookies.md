@@ -3,6 +3,7 @@ title: "Cookies and why you should reject them"
 date: 2026-11-21
 author: "Evan Economou"
 description: "An overview of what cookies are and why it benefits you to always reject all"
+tags: ["Privacy and Digital Safety"]
 ---
 
 Everywhere you go on the internet you see nearly the same pop-up, asking if the website can give you a cookie. Between the friendly name and the fact that the opt out button is often hidden or intentially obscured, most people just default to always accepting them.

@@ -4,7 +4,7 @@
   <header class="article-header">
     <h1>{{ .Title }}</h1>
     {{ if and $inTab .Description }}<p class="standfirst">{{ .Description }}</p>{{ end }}
-    {{ if $inTab }}{{ partial "meta.html" . }}{{ end }}
+    {{ if $inTab }}{{ partial "meta.html" . }}{{ partial "tag-list.html" . }}{{ end }}
   </header>
   <div class="content">
     {{ .Content }}

@@ -5,7 +5,8 @@ safety, and other technical topics, plus context on current events, for friends
 and family who don't work in tech.
 
 It's a static site built with [Hugo](https://gohugo.io/). There's no database,
-no tracking, no cookies, and only one tiny script (for copying my email address).
+no tracking, no cookies, and only two tiny scripts (one copies my email address,
+the other runs the tag filter on tab pages).
 Articles are Markdown files.
 
 The site opts out of AI training and scraping: `robots.txt` disallows known AI
@@ -38,6 +39,10 @@ hugo new content education/my-post.md
 Edit the new file, change `draft: true` to `draft: false`, and push. Each folder
 in `content/` is a tab on the site. Math goes between `$...$` or `$$...$$`.
 
+To tag a post, add `tags: ["AI learning series"]` (one or more) to its front
+matter. Tags show under the post in every list and on the post itself, and a
+"Show" dropdown appears on a tab as soon as any post in it has a tag.
+
 ## Layout
 
 ```
@@ -56,6 +61,7 @@ layouts/                 HTML templates
 assets/
   css/style.css          All styling; colors and type sizes are at the top
   js/contact.js          "Contact me" link that copies my email
+  js/tag-filter.js       Tag dropdown on tab pages
 static/                  Files served as-is (favicon)
 archetypes/default.md    Template for new posts
 hugo.toml                Site settings
