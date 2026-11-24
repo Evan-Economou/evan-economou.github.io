@@ -34,7 +34,7 @@ A few things to watch for:
 ## A few easy habits
 
 1. Click **Reject all** (or the closest thing to it) whenever you see a cookie banner.
-2. Use a browser that blocks third-party cookies by default. Firefox and Safari both do. Chrome lets you turn it on in its privacy settings.
+2. Use a browser that blocks third-party cookies by default. Firefox and Safari both do, and many like Chrome have the option to turn it on in settings
 3. Every so often, clear your cookies in your browser's settings. You'll have to log back in to a few sites, but it wipes out whatever tracking has built up.
 4. Consider getting a browser extension that automatically rejects cookies so you just don't have to worry about it. I use [Consent-o-Matic](https://github.com/cavi-au/Consent-O-Matic), but there are a bunch of options. Ultimately this only saves you like a second per website, but it's nice to not think about it.
 
