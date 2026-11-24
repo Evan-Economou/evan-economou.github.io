@@ -1,0 +1,10 @@
+{{- /* Usage: partial "tag-list.html" $page
+       Each tag links to its tab's page, filtered to that tag. */}}
+{{- $section := .CurrentSection }}
+{{- with partial "page-tags.html" . }}
+<ul class="tags" aria-label="Tags">
+  {{- range . }}
+  <li><a href="{{ $section.RelPermalink }}?tag={{ urlize . }}">{{ . }}</a></li>
+  {{- end }}
+</ul>
+{{- end }}
