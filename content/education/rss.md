@@ -16,7 +16,7 @@ There are a few options for making your own setup, and it really depends on how 
 
 ### Mobile
 
-This is my main use case, where I essentially just want an app that pulls in all of the content I would search for across the internet into a single place and allows me to easily access it on my own terms. I use an app called [NetNewsWire](https://apps.apple.com/us/app/netnewswire-rss-reader/id1480640210) to achieve this. Setup was trivially easy, with you just needing to provide a link (such as [evaneconomou.com/education](evaneconomou.com/education), or [evaneconomou.com/current-events](evaneconomou.com/current-events)) for it to start giving you notifications about new posts. You can also create folders to form custom feeds, like for specific topics or other groupings.
+This is my main use case, where I essentially just want an app that pulls in all of the content I would search for across the internet into a single place and allows me to easily access it on my own terms. I use an app called [NetNewsWire](https://apps.apple.com/us/app/netnewswire-rss-reader/id1480640210) to achieve this. Setup was trivially easy, with you just needing to provide a link (such as [evaneconomou.com](evaneconomou.com)) for it to start giving you notifications about new posts. You can also create folders to form custom feeds, like for specific topics or other groupings.
 
 Essentially, if you want to follow my work and continue seeing new articles I post, this is your best bet.
 
