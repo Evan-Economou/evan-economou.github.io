@@ -7,7 +7,7 @@ description: "How smart TVs track what you watch, and the settings you should tu
 tags: ["Privacy and Digital Safety"]
 ---
 
-TVs are one of the very few goods, especially in the tech space, that have trended down in price over the last two decades. Though some of this is explained by the improvements in the tech and it becoming easier to manufacture, a lot of it has actually paralleled the rise of big data and large tech companies. That 65" HD TV is only $200 because they know they can make their money back by selling information about the you as you use it. If that is a trade you are willing to make that is okay, but I am at least a fan of informed consent. 
+TVs are one of the very few goods, especially in the tech space, that have trended down in price over the last two decades. Though some of this is explained by the improvements in the tech and it becoming easier to manufacture, a lot of it has actually paralleled the rise of big data and large tech companies. That 65" HD TV is only $200 because they know they can make their money back by selling information about you as you use it. If that is a trade you are willing to make that is okay, but I am at least a fan of informed consent. 
 
 Anecdotally this was inspired by my own efforts to opt out on my own TVs. Between deeply convoluted menus and interface design that makes it look like your only option is to agree, it was really clear that the average person would just breeze straight through and donate their data to large tech companies.
 
