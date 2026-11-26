@@ -1,4 +1,5 @@
-# Site-wide settings. Change baseURL to your real domain before deploying.
+# Site-wide settings. baseURL is only a placeholder: build.sh overrides it at
+# build time with the BASE_URL environment variable (see README.md).
 baseURL = "https://example.com/"
 title = "Evan's Notebook"
 locale = "en-US"

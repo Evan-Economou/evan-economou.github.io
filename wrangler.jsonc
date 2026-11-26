@@ -1,0 +1,12 @@
+// Cloudflare Worker settings. The Worker has no code: it serves the files
+// Hugo builds into public/. "name" must match the Worker's name in the
+// Cloudflare dashboard, or the deploy fails.
+{
+  "name": "evans-notebook",
+  "compatibility_date": "2026-11-26",
+  "assets": {
+    "directory": "./public",
+    // Serve public/404.html (from layouts/404.html) for missing pages.
+    "not_found_handling": "404-page"
+  }
+}

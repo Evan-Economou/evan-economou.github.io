@@ -62,20 +62,36 @@ assets/
   css/style.css          All styling; colors and type sizes are at the top
   js/contact.js          "Contact me" link that copies my email
   js/tag-filter.js       Tag dropdown on tab pages
-static/                  Files served as-is (favicon)
+static/                  Files served as-is (favicon, Cloudflare _headers)
 archetypes/default.md    Template for new posts
 hugo.toml                Site settings
-.github/workflows/       Builds and publishes to GitHub Pages on every push
+build.sh                 Cloudflare build step (downloads Hugo, builds the site)
+wrangler.jsonc           Cloudflare Worker settings
 deploy/Caddyfile         Optional: web server config for self-hosting
 deploy.sh                Optional: build and upload to a self-hosted server
 ```
 
 ## Publishing
 
-Pushing to `main` runs `.github/workflows/hugo.yml`. It builds the site with Hugo
-and deploys it to GitHub Pages. In the repository settings, go to
-**Settings → Pages → Source** and choose **GitHub Actions** (this only has to be
-done once).
+The site is hosted on Cloudflare as a Worker with no code. It just serves the
+files Hugo builds into `public/`. The Worker is connected to this GitHub
+repository, so every push to `main` builds and publishes the site, and a push
+to any other branch uploads a preview version with its own URL.
+
+Worker settings (**Workers & Pages → the Worker → Settings → Build**):
+
+| Setting           | Value                                     |
+|-------------------|-------------------------------------------|
+| Build command     | `./build.sh`                              |
+| Deploy command    | `npx wrangler deploy`                     |
+| Preview command   | `npx wrangler preview`                    |
+| `BASE_URL` build variable | the site's address, e.g. `https://evans-notebook.<you>.workers.dev/` |
+
+`build.sh` downloads a fixed Hugo version (`HUGO_VERSION`, 0.169.0 by default)
+and builds the site. `wrangler.jsonc` tells Cloudflare to serve `public/` and to
+use `404.html` for missing pages. Its `name` must match the Worker's name in the
+dashboard. Response headers (security headers, caching) are set in
+`static/_headers`.
 
 ---
 
