@@ -85,10 +85,10 @@ Worker settings (**Workers & Pages → the Worker → Settings → Build**):
 | Build command     | `./build.sh`                              |
 | Deploy command    | `npx wrangler deploy`                     |
 | Preview command   | `npx wrangler preview`                    |
-| `BASE_URL` build variable | the site's address, e.g. `https://evans-notebook.<you>.workers.dev/` |
 
+The site lives at <https://evaneconomou.com/> (set as `baseURL` in `hugo.toml`).
 `build.sh` downloads a fixed Hugo version (`HUGO_VERSION`, 0.169.0 by default)
-and builds the site. `wrangler.jsonc` tells Cloudflare to serve `public/` and to
+and builds the site. A `BASE_URL` build variable, if set, overrides `baseURL`. `wrangler.jsonc` tells Cloudflare to serve `public/` and to
 use `404.html` for missing pages. Its `name` must match the Worker's name in the
 dashboard. Response headers (security headers, caching) are set in
 `static/_headers`.

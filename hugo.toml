@@ -1,6 +1,6 @@
-# Site-wide settings. baseURL is only a placeholder: build.sh overrides it at
-# build time with the BASE_URL environment variable (see README.md).
-baseURL = "https://example.com/"
+# Site-wide settings. To build for a different address (e.g. a test copy),
+# set the BASE_URL environment variable; build.sh uses it instead.
+baseURL = "https://evaneconomou.com/"
 title = "Evan's Notebook"
 locale = "en-US"
 
